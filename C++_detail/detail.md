@@ -2,17 +2,21 @@
 
 ## 关键字
 
- 1. static
- 2. const
- 3. extern
- 4. explict
- 5. volatile
+#### static
+
+####const
+
+####extern
+
+####explict
+
+####volatile
 
 使用volatile来防止编译器对变量的操作进行优化。一般在三种场景下可以使用volatile：1.变量要存在硬件寄存器中；2.中断服务的程序中要访问的变量；3.多线程环境中要共享的变量。
 
 一个变量可以同时是const和volatile类型，表示程序不应该改变变量的值，但是这个变量的值可能会被别的情况改变，因此编译器不要对变量的操作进行优化。
 
- 6. public/protected/private
+####public/protected/private
 
 public声明的成员可以被所有人访问；protected声明的成员可以被创建者及其子类访问；private只能被创建者和类的内部成员函数访问。
 
