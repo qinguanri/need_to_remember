@@ -12,6 +12,10 @@
 
 一个变量可以同时是const和volatile类型，表示程序不应该改变变量的值，但是这个变量的值可能会被别的情况改变，因此编译器不要对变量的操作进行优化。
 
+ 6. public/protected/private
+
+public声明的成员可以被所有人访问；protected声明的成员可以被创建者及其子类访问；private只能被创建者和类的内部成员函数访问。
+
 ## 内存管理
 
  1. malloc\free
