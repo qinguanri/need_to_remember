@@ -72,7 +72,18 @@ int main() {
 
 （2）在结构体中使用成员最大的对齐值来对齐。
 
-（3）程序员可以指定对齐值。使用宏 #pragma pack(n)来指定。
+（3）程序员可以指定对齐值。使用宏 #pragma pack(n)来指定。例如下面的结构体D占用7个字节：
+
+```c++
+#pragma pack(1)
+struct D
+{
+    int a;
+    char b;
+    short c;
+};
+// sizeof(D) = 7
+```
 
 ## STL
 
