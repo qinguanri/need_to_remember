@@ -1,6 +1,6 @@
 * [目录]
     * [1.C++语言细节](C++_detail/detail.md)
-    * [2.C++面向对象](C++_OO/OO.md_)
+    * [2.C++面向对象](C++_OO/OO.md)
     * [3.C++对象模型](C++_object_model/model.md)
     * [4.编译链接过程](build&link/build&link.md)
     * [5.算法与数据结构](algorithm&data/algorithm&data.md)
