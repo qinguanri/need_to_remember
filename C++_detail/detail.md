@@ -112,11 +112,13 @@ struct D
 
 vector分配的内存一般会大于需要存储的数据量。
 
- 2. list
- 3. deque
- 4. map
- 5. hash_map
- 6. string库函数
+#### list
+####deque
+####sets/multisets
+sets和multisets底层使用红黑树实现。不能对元素直接改值。而是先删除再插入。直接改值会导致红黑树中原来的次序错误。
+#### map
+####hash_map
+####string库函数
 
 ## 调试工具
 
