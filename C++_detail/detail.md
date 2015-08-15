@@ -29,14 +29,21 @@ public声明的成员可以被所有人访问；protected声明的成员可以�
 ####malloc/alloc/realloc的区别
 
 三个函数的声明分别是: 
+
 void* realloc(void* ptr, unsigned newsize); 
+
 void* malloc(unsigned size); 
+
 void* calloc(size_t numElements, size_t sizeOfElement); 
+
 它们的返回值都是请求系统分配的地址,如果请求失败就返回NULL。
 
 malloc与calloc的区别为1块与n块的区别： 
+
 malloc调用形式为(类型*)malloc(size)：在内存的动态存储区中分配一块长度为“size”字节的连续区域，返回该区域的首地址。 
+
 calloc调用形式为(类型*)calloc(n，size)：在内存的动态存储区中分配n块长度为“size”字节的连续区域，返回首地址。 
+
 realloc调用形式为(类型*)realloc(*ptr，size)：将ptr内存大小增大到size。(也可以缩小，缩小的内容消失)。
 
 另外malloc 只管分配内存，并不能对所得的内存进行初始化，所以得到的一片新内存中，其值将是随机的。calloc在动态分配完内存后，自动初始化该内存空间为零。
@@ -47,7 +54,9 @@ realloc有个细节需要注意：
 
  1.如果 当前连续内存块足够 realloc 的话，只是将p所指向的空间扩大，并返回p的指针地址。 这个时候 q 和 p 指向的地址是一样的。
 
+
  2.如果 当前连续内存块不够长度，再找一个足够长的地方，分配一块新的内存，q，并将 p指向的内容 copy到 q，返回 q。并将p所指向的内存空间删除。
+
 
 这样也就是说 realloc 有时候会产生一个新的内存地址 有的时候不会。所以在分配完成后。我们需要判断下 p 是否等于 q。并做相应的处理。
 
