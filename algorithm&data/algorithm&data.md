@@ -10,7 +10,7 @@
  5. 二分查找
 
 二分查找算法要注意两点，1防止死循环，2 防止溢出。标准代码如下，注意1、4、5处:
-'''
+```c++
 public int bsearch(int[] data, int x, int y, int v) {
     int m;
     while(x<=y){ //1
@@ -21,7 +21,7 @@ public int bsearch(int[] data, int x, int y, int v) {
     }
     return -1; //6
 }
-'''
+```
  
 ## 缓存算法
  6. LRU
