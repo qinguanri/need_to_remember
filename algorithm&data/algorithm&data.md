@@ -8,6 +8,20 @@
  
 ## 查找算法
  5. 二分查找
+
+二分查找算法要注意两点，1防止死循环，2 防止溢出。标准代码如下，注意1、4、5处:
+
+public int bsearch(int[] data, int x, int y, int v) {
+    int m;
+    while(x<=y){ //1
+        m = x + (y-x)/2; //2
+        if(data[m] == v) return m; //3
+        else if(data[m] > v) y = m - 1; //4
+        else x = 1 + m; //5
+    }
+    return -1; //6
+}
+
  
 ## 缓存算法
  6. LRU
