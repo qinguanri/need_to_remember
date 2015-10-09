@@ -123,3 +123,20 @@ sets和multisets底层使用红黑树实现。不能对元素直接改值。而�
 ## 调试工具
 
  1. gdb
+
+## 单例模式
+```C++
+class Singleton
+{
+private:
+ Singleton();
+ Singleton(const Singleton &s);
+ Singleton& operator=(const Singleton &s);
+public:
+ static Singleton* GetInstance()
+ {
+  static Singleton instance;
+  return &instance;
+ }
+};
+```
