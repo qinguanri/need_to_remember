@@ -4,6 +4,17 @@
 
 #### static
 
+1. 隐藏：当同时编译多个文件时，所有未加static前缀的全局变量和函数都具有全局可见性。
+static可以用作函数和变量的前缀，对于函数来讲，static的作用仅限于隐藏.
+2. static的第二个作用是保持变量内容的持久：存储在静态数据区的变量会在程序刚开始运行时就完成初始化，也是唯一的一次初始化。
+共有两种变量存储在静态存储区：全局变量和static变量，只不过和全局变量比起来，static可以控制变量的可见范围，
+说到底static还是用来隐藏的。虽然这种用法不常见
+3. static的第三个作用是默认初始化为0（static变量）
+4. C++中的作用
+1）不能将静态成员函数定义为虚函数。   
+2）静态数据成员是静态存储的，所以必须对它进行初始化。 （程序员手动初始化，否则编译时一般不会报错，但是在Link时会报错误）  
+3）静态数据成员在<定义或说明>时前面加关键字static。
+
 ####const
 
 ####extern
@@ -26,6 +37,13 @@ public声明的成员可以被所有人访问；protected声明的成员可以�
 
 ####new\delete
 
+ 1. malloc与free是C++/C语言的标准库函数，new/delete是C++的运算符。它们都可用于申请动态内存和释放内存。
+ 2. 对于非内部数据类型的对象而言，光用maloc/free无法满足动态对象的要求。对象在创建的同时要自动执行构造函数，对象在消亡之前要自动执行析构函数。由于malloc/free是库函数而不是运算符，不在编译器控制权限之内，不能够把执行构造函数和析构函数的任务强加于malloc/free。 
+ 3. 因此C++语言需要一个能完成动态内存分配和初始化工作的运算符new，以一个能完成清理与释放内存工作的运算符delete。注意new/delete不是库函数。
+ 4. C++程序经常要调用C函数，而C程序只能用malloc/free管理动态内存。
+ 5. new可以认为是malloc加构造函数的执行。new出来的指针是直接带类型信息的。而malloc返回的都是void指针。
+
+
 ####malloc/alloc/realloc的区别
 
 malloc调用形式为(类型*)malloc(size)：在内存的动态存储区中分配一块长度为“size”字节的连续区域，返回该区域的首地址。 
@@ -47,6 +65,8 @@ realloc有个细节需要注意：
 这里有点要注意的是要避免 p = realloc(p,2048); 这种写法。有可能会造成 realloc 分配失败后，p原先所指向的内存地址丢失。
 
 ####智能指针\悬挂指针\野指针
+
+智能指针是一种资源管理类，通过对原始指针进行封装，在资源管理对象进行析构时对指针指向的内存进行释放；通常使用引用计数方式进行管理。
 
 ####内存泄露
 
@@ -123,3 +143,20 @@ sets和multisets底层使用红黑树实现。不能对元素直接改值。而�
 ## 调试工具
 
  1. gdb
+
+## 单例模式
+```C++
+class Singleton
+{
+private:
+ Singleton();
+ Singleton(const Singleton &s);
+ Singleton& operator=(const Singleton &s);
+public:
+ static Singleton* GetInstance()
+ {
+  static Singleton instance;
+  return &instance;
+ }
+};
+```
